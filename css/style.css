@@ -2,4 +2,8 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+button {
+  margin-bottom: 20px;
+}
 /* fine generali */

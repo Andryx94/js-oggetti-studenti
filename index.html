@@ -12,16 +12,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
   </head>
   <body>
-    <!-- Titolo -->
-    <h1 class="text-center">Elenco studenti</h1>
-    <!-- fine titolo -->
+    <!-- Titolo e bottone -->
+  <div class="text-center">
+    <h1>Elenco studenti</h1>
+    <button id="button"type="button" name="button">Aggiungi studente</button>
+  </div>
+    <!-- fine titolo e bottone -->
 
     <!-- Template Handlebars -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="entry">
-        <h4>{{title}}</h4>
+        <h4>{{nome}} {{cognome}}</h4>
         <div class="body">
-          {{body}}
+          Anni: {{eta}}
         </div>
       </div>
     </script>

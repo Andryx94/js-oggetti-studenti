@@ -40,33 +40,35 @@ $(document).ready(
     // ESERCIZIO 3
     console.log("--- ESERCIZIO 3 ---");
 
-    // prompt richiesta dati utente e inserimento in oggetto
-    var nomeUtente = prompt("Dimmi il tuo nome");
-    var cognomeUtente = prompt("Dimmi il tuo cognome");
-    var etaUtente = parseInt(prompt("Dimmi quanti anni hai"));
-
-    var studenteUtente = {
-      "nome": nomeUtente,
-      "cognome": cognomeUtente,
-      "eta": etaUtente,
-    }
-
-    //inserimento nuovo oggetto in array precedente
-    studenti.push(studenteUtente);
-    console.log(studenti);
-
-    //ciclo su lunghezza array per stampa in codice HTML tramite template Handlebars
+    //ciclo su lunghezza array e stampa con funzione Handlebars
     for (var j = 0; j < studenti.length; j++) {
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
-
-      var context = {
-        title: (studenti[j].nome + " " + studenti[j].cognome),
-        body: ("Anni: " + studenti[j].eta)
-      };
-
-      var html = template(context);
-      $(".container").append(html);
+      handlebars(studenti[j].nome, studenti[j].cognome, studenti[j].eta);
     };
+
+    // avvio funzione al click sul bottone
+    $("#button").click(function() {
+      // prompt richiesta dati utente e stampa con funzione Handlebars
+      var nomeUtente = prompt("Dimmi il tuo nome");
+      var cognomeUtente = prompt("Dimmi il tuo cognome");
+      var etaUtente = parseInt(prompt("Dimmi quanti anni hai"));
+      handlebars(nomeUtente, cognomeUtente, etaUtente);
+    });
   }
 );
+
+//FUNZIONE stampa in codice HTML tramite template Handlebars
+function handlebars(nome, cognome, eta){
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+
+  var context = {
+    nome: nome,
+    cognome: cognome,
+    eta: eta,
+  };
+
+  var html = template(context);
+  $(".container").append(html);
+}
